@@ -1,12 +1,21 @@
 import streamlit as st
+from PIL import Image
 
 # Cấu hình trang
 st.set_page_config(page_title="CV - Hanna", page_icon="💼", layout="wide")
 
-# ====== HEADER ======
-st.title("💼 Curriculum Vitae")
-st.subheader("Hanna - IT Developer")
-st.write("📍 Hồ Chí Minh, Việt Nam | 📧 hanna@example.com | 📞 +84 912 345 678")
+# ====== HEADER + ẢNH ======
+col1, col2 = st.columns([1, 3])
+
+with col1:
+    image = Image.open("avatar.jpg")  # Đặt ảnh cùng thư mục với cv.py
+    st.image(image, caption="Hanna - IT Developer", width=150)
+
+with col2:
+    st.title("💼 Curriculum Vitae")
+    st.subheader("Hanna - IT Developer")
+    st.write("📍 Hồ Chí Minh, Việt Nam | 📧 hanna@example.com | 📞 +84 912 345 678")
+
 st.markdown("---")
 
 # ====== GIỚI THIỆU ======
