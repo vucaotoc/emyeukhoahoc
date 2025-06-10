@@ -8,7 +8,7 @@ st.set_page_config(page_title="CV - Hanna", page_icon="💼", layout="wide")
 col1, col2 = st.columns([1, 3])
 
 with col1:
-    image = Image.open("avatar.jpg")  # Đặt ảnh cùng thư mục với cv.py
+    image = Image.open("avata.jpg")  # Đặt ảnh cùng thư mục với cv.py
     st.image(image, caption="Hanna - IT Developer", width=150)
 
 with col2:
