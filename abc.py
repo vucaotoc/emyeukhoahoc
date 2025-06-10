@@ -1,40 +1,37 @@
 import streamlit as st
 import random
 
-st.set_page_config(page_title="Game Oẳn Tù Tì", page_icon="✌️", layout="centered")
+# Tiêu đề ứng dụng
+st.title("Trò Chơi Bao Kéo Búa")
 
-# Giao diện
-st.title("✊✋✌️ Oẳn Tù Tì")
-st.write("Chọn 1 trong 3 và chơi với máy!")
+# Tùy chọn cho người chơi
+choices = ["Bao", "Kéo", "Búa"]
+player_choice = st.selectbox("Chọn của bạn:", choices)
 
-# Danh sách lựa chọn
-choices = ["✊ Búa", "✋ Bao", "✌️ Kéo"]
-choice_map = {
-    "✊ Búa": "rock",
-    "✋ Bao": "paper",
-    "✌️ Kéo": "scissors"
-}
-
-# Người chơi chọn
-player_choice = st.radio("Bạn chọn:", choices)
-
-if st.button("👊 Oẳn Tù Tì!"):
-    player = choice_map[player_choice]
-    computer = random.choice(["rock", "paper", "scissors"])
-
-    st.write(f"🤖 Máy chọn: **{computer}**")
+# Nút để chơi
+if st.button("Chơi"):
+    # Máy chọn ngẫu nhiên
+    computer_choice = random.choice(choices)
     
-    # Kết quả
-    if player == computer:
-        st.info("⚖️ Hòa nhau rồi!")
-    elif (player == "rock" and computer == "scissors") or \
-         (player == "paper" and computer == "rock") or \
-         (player == "scissors" and computer == "paper"):
-        st.success("🎉 Bạn thắng!")
+    # Hiển thị lựa chọn
+    st.write(f"Bạn chọn: {player_choice}")
+    st.write(f"Máy chọn: {computer_choice}")
+    
+    # Xác định kết quả
+    if player_choice == computer_choice:
+        st.write("Hòa!")
+    elif (player_choice == "Bao" and computer_choice == "Búa") or \
+         (player_choice == "Kéo" and computer_choice == "Bao") or \
+         (player_choice == "Búa" and computer_choice == "Kéo"):
+        st.write("Bạn thắng! 🎉")
     else:
-        st.error("😢 Bạn thua rồi!")
+        st.write("Máy thắng! 😢")
 
-    st.markdown("---")
-
-    st.button("Chơi lại")  # chỉ để refresh giao diện
-
+# Hướng dẫn chơi
+st.markdown("""
+### Hướng dẫn:
+- Bao thắng Búa
+- Kéo thắng Bao
+- Búa thắng Kéo
+Chọn một tùy chọn và nhấn 'Chơi' để bắt đầu!
+""")
